@@ -60,10 +60,6 @@ resource "aws_dynamodb_table" "openai-prompt-result-terraform"{
     type = "N"
   }
 }
-resource "aws_iam_role" "iam_for_lambda" {
-  name               = "iam_for_lambda"
-  assume_role_policy = data.aws_iam_policy_document.policy.json
-}
 resource "aws_lambda_function" "proxy-lambda" {
   # If the file is not in the current working directory you will need to include a
   # path.module in the filename.
