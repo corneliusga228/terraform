@@ -24,7 +24,7 @@ provider "aws" {
   region = "us-west-2"
 }
 
-resource "aws_dynamodb_table" "listings"{
+resource "aws_dynamodb_table" "listings-terraform"{
   name = "Listings"
   billing_mode   = "PROVISIONED"
   read_capacity  = 20
@@ -36,7 +36,7 @@ resource "aws_dynamodb_table" "listings"{
     type = "N"
   }
 }
-resource "aws_dynamodb_table" "extracted-keys"{
+resource "aws_dynamodb_table" "extracted-keys-terraform"{
   name = "extracted-keys"
   billing_mode   = "PROVISIONED"
   read_capacity  = 20
@@ -48,7 +48,7 @@ resource "aws_dynamodb_table" "extracted-keys"{
     type = "N"
   }
 }
-resource "aws_dynamodb_table" "openai-prompt-result"{
+resource "aws_dynamodb_table" "openai-prompt-result-terraform"{
   name = "Listings"
   billing_mode   = "PROVISIONED"
   read_capacity  = 20
@@ -59,6 +59,10 @@ resource "aws_dynamodb_table" "openai-prompt-result"{
     name = "ListingId"
     type = "N"
   }
+}
+resource "aws_iam_role" "iam_for_lambda" {
+  name               = "iam_for_lambda"
+  assume_role_policy = data.aws_iam_policy_document.policy.json
 }
 resource "aws_lambda_function" "proxy-lambda" {
   # If the file is not in the current working directory you will need to include a
