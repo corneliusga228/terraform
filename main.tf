@@ -60,6 +60,12 @@ resource "aws_dynamodb_table" "openai-prompt-result-terraform"{
     type = "N"
   }
 }
+provider "archive" {}
+data "archive_file" "zip" {
+  type        = "zip"
+  source_file = "welcome.py"
+  output_path = "welcome.zip"
+}
 data "aws_iam_policy_document" "policy" {
   statement {
     sid    = ""
