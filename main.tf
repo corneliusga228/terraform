@@ -32,7 +32,7 @@ resource "aws_dynamodb_table" "listings-terraform"{
   hash_key       = "ListingID"
   
   attribute {
-    name = "ListingId"
+    name = "ListingID"
     type = "N"
   }
 }
