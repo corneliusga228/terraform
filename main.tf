@@ -1,10 +1,4 @@
 terraform {
-  backend "remote" {
-    organization = "CostarCapstone"
-
-    workspaces {
-      name = "gh-actions-demo"
-    }
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -24,6 +18,12 @@ terraform {
       name = "gh-actions-demo"
     }
   }
+  backend "remote" {
+    organization = "CostarCapstone"
+
+    workspaces {
+      name = "gh-actions-demo"
+    }
 }
 
 provider "aws" {
