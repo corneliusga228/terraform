@@ -18,18 +18,17 @@ terraform {
       name = "gh-actions-demo"
     }
   }
-  backend "remote" {
+
+provider "aws" {
+  region = "us-east-1"
+}
+backend "remote" {
     organization = "CostarCapstone"
 
     workspaces {
       name = "gh-actions-demo"
     }
 }
-
-provider "aws" {
-  region = "us-east-1"
-}
-
 resource "aws_dynamodb_table" "listings-terraform"{
   name = "Listings"
   billing_mode   = "PROVISIONED"
