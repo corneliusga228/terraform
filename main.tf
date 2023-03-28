@@ -29,7 +29,7 @@ resource "aws_dynamodb_table" "listings-terraform"{
   billing_mode   = "PROVISIONED"
   read_capacity  = 20
   write_capacity = 20
-  hash_key       = "ListingId"
+  hash_key       = "ListingID"
   
   attribute {
     name = "ListingId"
