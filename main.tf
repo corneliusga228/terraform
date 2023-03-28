@@ -25,7 +25,7 @@ provider "aws" {
 }
 
 resource "aws_dynamodb_table" "listings-terraform"{
-  name = "Listings-test"
+  name = "Listings"
   billing_mode   = "PROVISIONED"
   read_capacity  = 20
   write_capacity = 20
@@ -34,5 +34,30 @@ resource "aws_dynamodb_table" "listings-terraform"{
   attribute {
     name = "ListingId"
     type = "N"
+  }
+}
+resource "aws_dynamodb_table" "extracted-keys" {
+  name = "extracted-keys"
+  billing_mode   = "PROVISIONED"
+  read_capacity  = 20
+  write_capacity = 20
+  hash_key       = "ListingID"
+  
+  attribute {
+     name = "ListingID"
+     type = "N"
+  }
+}
+
+resource "aws_dynamodb_table" "openai-prompt-result" {
+  name = "openai-prompt-result"
+  billing_mode   = "PROVISIONED"
+  read_capacity  = 20
+  write_capacity = 20
+  hash_key       = "ListingID"
+  
+  attribute {
+     name = "ListingID"
+     type = "N"
   }
 }
